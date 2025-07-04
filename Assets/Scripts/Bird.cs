@@ -21,10 +21,13 @@ public class Brid : MonoBehaviour
 
     public GameObject boom;
 
+    private TestMyTrail myTrail;
+
     private void Awake()
     {
         sp = GetComponent<SpringJoint2D>();
         rg = GetComponent<Rigidbody2D>();
+        myTrail = GetComponent<TestMyTrail>();
     }
 
     void Start()
@@ -76,6 +79,7 @@ public class Brid : MonoBehaviour
 
     void Fly()
     {
+        myTrail.StartTrails();
         sp.enabled = false;
         isFly = true;
 
@@ -105,5 +109,10 @@ public class Brid : MonoBehaviour
         Destroy(gameObject);
         Instantiate(boom, transform.position, Quaternion.identity);
         GameManager._instance.NextBird();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        myTrail.ClearTrails();
     }
 }
