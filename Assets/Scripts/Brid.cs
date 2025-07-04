@@ -6,6 +6,8 @@ public class Brid : MonoBehaviour
 {
 
     private bool isClick = false;
+    public Transform rightPos;
+    public float maxDis = 1.2f;
     
     // Start is called before the first frame update
     void Start()
@@ -22,11 +24,17 @@ public class Brid : MonoBehaviour
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //transform.position += new Vector3(0, 0, 10);
             transform.position += new Vector3(0,0,-Camera.main.transform.position.z);
+            if (Vector3.Distance(transform.position,rightPos.position) > maxDis)    //  进行位置限定
+            {
+                Vector3 pos = (transform.position - rightPos.position).normalized;  //  单位化向量
+                pos *= maxDis;  //  最大长度的向量
+                transform.position = pos + rightPos.position;
+            }
         }
     }
 
     //  鼠标按下
-    private void OnMouseDown()
+    private void OnMouseDown() 
     {
         isClick = true;
     }
