@@ -8,11 +8,16 @@ public class GameManager : MonoBehaviour
     public List<Brid> birds;
     public List<Pig> pigs;
     public static GameManager _instance;
+    private Vector3 orignPos;   //  初始化的位置 
 
 
     private void Awake()
     {
         _instance = this;
+        if (birds.Count > 0)
+        {
+            orignPos = birds[0].transform.position;
+        }
     }
 
 
@@ -28,6 +33,7 @@ public class GameManager : MonoBehaviour
         {
             if (i == 0) //  第一只小鸟
             {
+                birds[i].transform.position = orignPos;
                 birds[i].enabled = true;
                 birds[i].sp.enabled = true;
             }
