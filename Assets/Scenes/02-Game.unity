@@ -163,7 +163,7 @@ SpringJoint2D:
   m_AutoConfigureDistance: 0
   m_Distance: 0.3
   m_DampingRatio: 0
-  m_Frequency: 2
+  m_Frequency: 3
 --- !u!50 &107723404
 Rigidbody2D:
   serializedVersion: 4

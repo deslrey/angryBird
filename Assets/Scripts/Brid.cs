@@ -7,8 +7,16 @@ public class Brid : MonoBehaviour
 
     private bool isClick = false;
     public Transform rightPos;
-    public float maxDis = 1.2f;
-    
+    public float maxDis = 3f;
+    private SpringJoint2D sp;
+    private Rigidbody2D rg;
+
+    private void Awake()
+    {
+        sp = GetComponent<SpringJoint2D>();
+        rg = GetComponent<Rigidbody2D>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,11 +45,20 @@ public class Brid : MonoBehaviour
     private void OnMouseDown() 
     {
         isClick = true;
+        rg.isKinematic = true;
+
     }
 
     //  Êó±êÌ§Æð
     private void OnMouseUp()
     {
         isClick = false;
+        rg.isKinematic = false;
+        Invoke("Fly", 0.1f);
+    }
+
+    void Fly()
+    {
+        sp.enabled = false;
     }
 }
