@@ -25,6 +25,7 @@ public class Brid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Line(); // 初始化线条
 
     }
 
@@ -43,6 +44,18 @@ public class Brid : MonoBehaviour
                 pos *= maxDis;  //  最大长度的向量
                 transform.position = pos + rightPos.position;
             }
+            // 如果弹簧还存在，就持续绘制线条
+            if (sp.enabled)
+            {
+                //Line();
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (sp.enabled)
+        {
             Line();
         }
     }
