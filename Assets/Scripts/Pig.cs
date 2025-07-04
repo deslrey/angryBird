@@ -12,6 +12,8 @@ public class Pig : MonoBehaviour
     public GameObject boom;
     public GameObject score;
 
+    public bool isPig = false;
+
     private void Awake()
     {
         render = GetComponent<SpriteRenderer>();
@@ -42,6 +44,10 @@ public class Pig : MonoBehaviour
 
     void Dead()
     {
+        if (isPig)
+        {
+            GameManager._instance.pigs.Remove(this);
+        }
         Destroy(gameObject);
         Instantiate(boom, transform.position, Quaternion.identity);
         GameObject go = Instantiate(score, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);

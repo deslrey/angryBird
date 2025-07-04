@@ -7,13 +7,16 @@ public class Brid : MonoBehaviour
 
     private bool isClick = false;
     public float maxDis = 3f;
-    private SpringJoint2D sp;
+    [HideInInspector]
+    public SpringJoint2D sp;
     private Rigidbody2D rg;
 
     public LineRenderer right;
     public Transform rightPos;
     public LineRenderer left;
     public Transform leftPos;
+
+    public GameObject boom;
 
 
     private void Awake()
@@ -79,6 +82,7 @@ public class Brid : MonoBehaviour
     void Fly()
     {
         sp.enabled = false;
+        Invoke("Next", 5);
     }
 
     //  划线操作
@@ -89,5 +93,14 @@ public class Brid : MonoBehaviour
 
         left.SetPosition(0, leftPos.position);
         left.SetPosition(1, transform.position);
+    }
+
+    //  下一只小鸟发飞出
+    void Next()
+    {
+        GameManager._instance.birds.Remove(this);
+        Destroy(gameObject);
+        Instantiate(boom, transform.position, Quaternion.identity);
+        GameManager._instance.NextBird();
     }
 }
