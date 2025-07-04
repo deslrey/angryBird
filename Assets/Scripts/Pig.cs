@@ -9,6 +9,8 @@ public class Pig : MonoBehaviour
     public float minSpeed = 4;
     public SpriteRenderer render;
     public Sprite hurt;
+    public GameObject boom;
+    public GameObject score;
 
     private void Awake()
     {
@@ -31,10 +33,18 @@ public class Pig : MonoBehaviour
     {
         if (collision.relativeVelocity.magnitude > maxSpeed)    //  Ö±½ÓËÀÍö
         {
-            Destroy(gameObject);
+            Dead();
         }else if (collision.relativeVelocity.magnitude > minSpeed && collision.relativeVelocity.magnitude < maxSpeed)  //  ÊÜÉË
         {
             render.sprite = hurt;
         }
+    }
+
+    void Dead()
+    {
+        Destroy(gameObject);
+        Instantiate(boom, transform.position, Quaternion.identity);
+        GameObject go = Instantiate(score, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+        Destroy(go, 1.5f);
     }
 }
