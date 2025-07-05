@@ -23,6 +23,7 @@ public class Brid : MonoBehaviour
 
     private TestMyTrail myTrail;
 
+    private bool canMove = true;
     private void Awake()
     {
         sp = GetComponent<SpringJoint2D>();
@@ -66,15 +67,22 @@ public class Brid : MonoBehaviour
 
     private void OnMouseDown()
     {
-        isClick = true;
-        rg.isKinematic = true;
+        if (canMove)
+        {
+            isClick = true;
+            rg.isKinematic = true;
+        }
     }
 
     private void OnMouseUp()
     {
-        isClick = false;
-        rg.isKinematic = false;
-        Invoke("Fly", 0.1f);
+        if (canMove)
+        {
+            isClick = false;
+            rg.isKinematic = false;
+            Invoke("Fly", 0.1f);
+            canMove = false;
+        }
     }
 
     void Fly()
