@@ -66,11 +66,11 @@ public class GameManager : MonoBehaviour
         else
         {
             //  с╝ак
-            win.SetActive(true);
+            win.SetActive(true); 
         }
     }
 
-    public void showStarts()
+    public void ShowStarts()
     {
 
     }
