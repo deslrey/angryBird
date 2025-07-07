@@ -16,12 +16,14 @@ public class PausePanel : MonoBehaviour
 
     public void Retry()
     {
-
+        Time.timeScale = 1;
+        SceneManager.LoadScene(2);
     }
 
     public void Home()
     {
-
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
     }
 
     /// <summary>

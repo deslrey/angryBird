@@ -24,6 +24,9 @@ public class Brid : MonoBehaviour
     private TestMyTrail myTrail;
 
     private bool canMove = true;
+
+    public float smooth = 3;
+
     private void Awake()
     {
         sp = GetComponent<SpringJoint2D>();
@@ -55,6 +58,11 @@ public class Brid : MonoBehaviour
                 Line();
             }
         }
+
+        //  Ïà»ú¸úËæ
+        float posX = transform.position.x;
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(Mathf.Clamp(posX, 0, 15), Camera.main.transform.position.y, Camera.main.transform.position.z), smooth * Time.deltaTime);
+
     }
 
     void FixedUpdate()
