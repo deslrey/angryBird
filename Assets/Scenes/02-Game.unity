@@ -1175,6 +1175,8 @@ MonoBehaviour:
   leftPos: {fileID: 1590911032}
   boom: {fileID: 1640878939803641064, guid: 26ba62927e84c804893c09a878d6a2de, type: 3}
   smooth: 3
+  select: {fileID: 8300000, guid: 3641c9435ad52ea429348437c2742cdb, type: 3}
+  fly: {fileID: 8300000, guid: 65774e057815a5e4fa70215e9acad616, type: 3}
 --- !u!58 &326410856
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3661,6 +3663,9 @@ MonoBehaviour:
   boom: {fileID: 1640878939803641064, guid: 26ba62927e84c804893c09a878d6a2de, type: 3}
   score: {fileID: 2660465693167281410, guid: 08f6dbbdfac70004c8d33d217ee94331, type: 3}
   isPig: 1
+  hurtClip: {fileID: 0}
+  dead: {fileID: 0}
+  birdCollision: {fileID: 0}
 --- !u!58 &989824420
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6296,6 +6301,8 @@ MonoBehaviour:
   leftPos: {fileID: 1590911032}
   boom: {fileID: 1640878939803641064, guid: 26ba62927e84c804893c09a878d6a2de, type: 3}
   smooth: 3
+  select: {fileID: 8300000, guid: 3641c9435ad52ea429348437c2742cdb, type: 3}
+  fly: {fileID: 8300000, guid: 65774e057815a5e4fa70215e9acad616, type: 3}
 --- !u!58 &1936093534
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7134,6 +7141,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4332012640167012807, guid: 68b91051119cbcf488ca7091eaf91e6d, type: 3}
+      propertyPath: fly
+      value: 
+      objectReference: {fileID: 8300000, guid: 65774e057815a5e4fa70215e9acad616, type: 3}
+    - target: {fileID: 4332012640167012807, guid: 68b91051119cbcf488ca7091eaf91e6d, type: 3}
       propertyPath: left
       value: 
       objectReference: {fileID: 1527377213}
@@ -7141,6 +7152,10 @@ PrefabInstance:
       propertyPath: right
       value: 
       objectReference: {fileID: 206647404}
+    - target: {fileID: 4332012640167012807, guid: 68b91051119cbcf488ca7091eaf91e6d, type: 3}
+      propertyPath: select
+      value: 
+      objectReference: {fileID: 8300000, guid: 3641c9435ad52ea429348437c2742cdb, type: 3}
     - target: {fileID: 4332012640167012807, guid: 68b91051119cbcf488ca7091eaf91e6d, type: 3}
       propertyPath: leftPos
       value: 

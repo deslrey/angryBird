@@ -178,3 +178,6 @@ MonoBehaviour:
   boom: {fileID: 1640878939803641064, guid: 26ba62927e84c804893c09a878d6a2de, type: 3}
   score: {fileID: 5331891879396125546, guid: 2601307bb2ff603498f5fcf118a1db5c, type: 3}
   isPig: 0
+  hurtClip: {fileID: 8300000, guid: 53dea70923c95cb45864ff65eeb38785, type: 3}
+  dead: {fileID: 8300000, guid: f7872a240c3a867458646a6a01dde6a2, type: 3}
+  birdCollision: {fileID: 8300000, guid: 3641c9435ad52ea429348437c2742cdb, type: 3}

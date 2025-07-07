@@ -14,6 +14,10 @@ public class Pig : MonoBehaviour
 
     public bool isPig = false;
 
+    public AudioClip hurtClip;
+    public AudioClip dead;
+    public AudioClip birdCollision;
+
     private void Awake()
     {
         render = GetComponent<SpriteRenderer>();
@@ -33,12 +37,20 @@ public class Pig : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        if (collision.gameObject.tag == "Player")
+        {
+            AudioPlay(birdCollision);
+        }
+
         if (collision.relativeVelocity.magnitude > maxSpeed)    //  Ö±½ÓËÀÍö
         {
             Dead();
         }else if (collision.relativeVelocity.magnitude > minSpeed && collision.relativeVelocity.magnitude < maxSpeed)  //  ÊÜÉË
         {
             render.sprite = hurt;
+            //  ÊÜÉËÒôÀÖ
+            AudioPlay(hurtClip);
         }
     }
 
@@ -52,5 +64,13 @@ public class Pig : MonoBehaviour
         Instantiate(boom, transform.position, Quaternion.identity);
         GameObject go = Instantiate(score, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
         Destroy(go, 1.5f);
+
+        //  ²¥·ÅËÀÍöÒôÀÖ
+        AudioPlay(dead);
+    }
+
+    public void AudioPlay(AudioClip clip)
+    {
+        AudioSource.PlayClipAtPoint(clip, transform.position);
     }
 }

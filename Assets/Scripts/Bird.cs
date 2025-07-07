@@ -27,6 +27,9 @@ public class Brid : MonoBehaviour
 
     public float smooth = 3;
 
+    public AudioClip select;
+    public AudioClip fly;
+
     private void Awake()
     {
         sp = GetComponent<SpringJoint2D>();
@@ -73,15 +76,22 @@ public class Brid : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 鼠标按下
+    /// </summary>
     private void OnMouseDown()
     {
         if (canMove)
         {
+            AudioPlay(select);
             isClick = true;
             rg.isKinematic = true;
         }
     }
 
+    /// <summary>
+    /// 鼠标松开
+    /// </summary>
     private void OnMouseUp()
     {
         if (canMove)
@@ -95,6 +105,7 @@ public class Brid : MonoBehaviour
 
     void Fly()
     {
+        AudioPlay(fly);
         myTrail.StartTrails();
         sp.enabled = false;
         isFly = true;
@@ -130,5 +141,10 @@ public class Brid : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         myTrail.ClearTrails();
+    }
+
+    public void AudioPlay(AudioClip clip)
+    {
+        AudioSource.PlayClipAtPoint(clip, transform.position);
     }
 }
