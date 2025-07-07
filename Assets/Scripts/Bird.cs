@@ -12,7 +12,7 @@ public class Brid : MonoBehaviour
     [HideInInspector]
     public SpringJoint2D sp;
 
-    private Rigidbody2D rg;
+    protected Rigidbody2D rg;
 
     public LineRenderer right;
     public Transform rightPos;
@@ -66,6 +66,13 @@ public class Brid : MonoBehaviour
         float posX = transform.position.x;
         Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(Mathf.Clamp(posX, 0, 15), Camera.main.transform.position.y, Camera.main.transform.position.z), smooth * Time.deltaTime);
 
+        if (isFly)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                ShowSkill();
+            }
+        }
     }
 
     void FixedUpdate()
@@ -140,11 +147,21 @@ public class Brid : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        isFly = false;
         myTrail.ClearTrails();
     }
 
     public void AudioPlay(AudioClip clip)
     {
         AudioSource.PlayClipAtPoint(clip, transform.position);
+    }
+
+    /// <summary>
+    /// ìÅ¼¼²Ù×÷
+    /// </summary>
+    public virtual void ShowSkill()
+    {
+        isFly = false;
+
     }
 }
