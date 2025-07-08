@@ -21,7 +21,7 @@ public class Brid : MonoBehaviour
 
     public GameObject boom;
 
-    private TestMyTrail myTrail;
+    protected TestMyTrail myTrail;
 
     private bool canMove = true;
 
@@ -32,7 +32,7 @@ public class Brid : MonoBehaviour
 
 
     public Sprite hurt;
-    private SpriteRenderer render;
+    protected SpriteRenderer render;
 
     private void Awake()
     {
@@ -142,7 +142,7 @@ public class Brid : MonoBehaviour
         left.SetPosition(1, transform.position);
     }
 
-    void Next()
+   protected virtual void Next()
     {
         GameManager._instance.birds.Remove(this);
         Destroy(gameObject);
@@ -154,7 +154,7 @@ public class Brid : MonoBehaviour
     {
         isFly = false;
         myTrail.ClearTrails();
-        
+        //render.sprite = hurt;
     }
 
     public void AudioPlay(AudioClip clip)

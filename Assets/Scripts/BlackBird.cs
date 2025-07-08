@@ -39,5 +39,22 @@ public class BlackBird : Brid
                 blocks[i].Dead();
             }
         }
+        OnClear();
+    }
+
+    protected override void Next()
+    {
+        GameManager._instance.birds.Remove(this);
+        Destroy(gameObject);
+        GameManager._instance.NextBird();
+    }
+
+    void OnClear()
+    {
+        rg.velocity = Vector3.zero;
+        Instantiate(boom, transform.position, Quaternion.identity);
+        render.enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
+        myTrail.ClearTrails();
     }
 }

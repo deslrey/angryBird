@@ -38,10 +38,22 @@ public class Pig : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
+        print("标签为 ======》 " + collision.gameObject.tag);
+
         if (collision.gameObject.tag == "Player")
         {
             AudioPlay(birdCollision);
-            collision.transform.GetComponent<Brid>().Hurt();
+            Brid bird = collision.transform.GetComponent<Brid>();
+            if (bird != null)
+            {
+                bird.Hurt();
+                print("调用小鸟受伤成功");
+            }
+            else
+            {
+                print("找不到 Brid 组件！");
+            }
+
         }
 
         if (collision.relativeVelocity.magnitude > maxSpeed)    //  直接死亡

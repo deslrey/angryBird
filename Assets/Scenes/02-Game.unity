@@ -5879,7 +5879,7 @@ GameObject:
   - component: {fileID: 1936093539}
   m_Layer: 0
   m_Name: yellowBird
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6591,6 +6591,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: greenBird
       objectReference: {fileID: 0}
+    - target: {fileID: 3165494620333902526, guid: f973adc64ae8e2c4d92cdccb31884cca, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3208837381885079422, guid: f973adc64ae8e2c4d92cdccb31884cca, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.79
@@ -6708,6 +6712,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: blackBird
       objectReference: {fileID: 0}
+    - target: {fileID: 1205650297431982447, guid: 917a6db5e6d48304c95b4bb9c4105b74, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2319384753921183633, guid: 917a6db5e6d48304c95b4bb9c4105b74, type: 3}
       propertyPath: left
       value: 
@@ -6744,6 +6752,10 @@ PrefabInstance:
     - target: {fileID: 1820268620523093488, guid: c3a556d24123a8842a4e004e65fb5292, type: 3}
       propertyPath: m_Name
       value: pig
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820268620523093488, guid: c3a556d24123a8842a4e004e65fb5292, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4924186352346857483, guid: c3a556d24123a8842a4e004e65fb5292, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6946,6 +6958,10 @@ PrefabInstance:
     - target: {fileID: 7244714616087127877, guid: 68b91051119cbcf488ca7091eaf91e6d, type: 3}
       propertyPath: m_Name
       value: redBird
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244714616087127877, guid: 68b91051119cbcf488ca7091eaf91e6d, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
