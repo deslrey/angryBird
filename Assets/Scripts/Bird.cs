@@ -7,7 +7,7 @@ public class Brid : MonoBehaviour
     private bool isClick = false;
     private bool isFly = false; // ·É³ö±ê¼Ç
 
-    public float maxDis = 3f;
+    public float maxDis = 1.5f;
 
     [HideInInspector]
     public SpringJoint2D sp;
