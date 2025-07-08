@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour
         Initialized();
     }
 
-    //  初始化小鸟
+    /// <summary>
+    /// 初始化小鸟
+    /// </summary>
     private void Initialized()
     {
         for (int i = 0; i < birds.Count; i++)
@@ -50,7 +52,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //  判定游戏逻辑
+    /// <summary>
+    /// 判定游戏逻辑
+    /// </summary>
     public void NextBird()
     {
         if (pigs.Count > 0)
@@ -83,6 +87,11 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < birds.Count + 1; i++)
         {
+            if (i >=stars.Length)
+            {
+                break;
+                
+            }
             yield return new WaitForSeconds(0.2f);
             stars[i].SetActive(true);
         }
