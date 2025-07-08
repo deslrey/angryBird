@@ -10,6 +10,9 @@ public class MapSelect : MonoBehaviour
     public GameObject locks;
     public GameObject stars;
 
+    public GameObject panel;
+    public GameObject map;
+
     private void Start()
     {
         if (PlayerPrefs.GetInt("totaoNum", 0) >= starsNum)
@@ -20,6 +23,18 @@ public class MapSelect : MonoBehaviour
         {
             locks.SetActive(false);
             stars.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    ///  Û±Í—°‘Ò
+    /// </summary>
+    public void Selected()
+    {
+        if (isSelect)
+        {
+            panel.SetActive(true);
+            map.SetActive(false);
         }
     }
 }
