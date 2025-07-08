@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] stars;
 
+    private int starsNum = 0;
     private void Awake()
     {
         _instance = this;
@@ -85,25 +86,32 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Show()
     {
-        for (int i = 0; i < birds.Count + 1; i++)
+        for (; starsNum < birds.Count + 1; starsNum++)
         {
-            if (i >=stars.Length)
+            if (starsNum >= stars.Length)
             {
                 break;
                 
             }
             yield return new WaitForSeconds(0.2f);
-            stars[i].SetActive(true);
+            stars[starsNum].SetActive(true);
         }
     }
 
     public void Replay()
     {
+        SaveData();
         SceneManager.LoadScene(2);
     }
 
     public void Home()
     {
+        SaveData();
         SceneManager.LoadScene(1);
+    }
+
+    public void SaveData()
+    {
+        PlayerPrefs.SetInt(PlayerPrefs.GetString("nowLevel"), starsNum);
     }
 }
