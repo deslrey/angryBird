@@ -15,7 +15,7 @@ public class MapSelect : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("totaoNum", 0) >= starsNum)
+        if (PlayerPrefs.GetInt("totalNum", 0) >= starsNum)
         {
             isSelect = true;
         }
@@ -23,6 +23,7 @@ public class MapSelect : MonoBehaviour
         {
             locks.SetActive(false);
             stars.SetActive(true);
+            //TODO:textœ‘ æ
         }
     }
 
