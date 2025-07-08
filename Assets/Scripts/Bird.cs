@@ -30,11 +30,16 @@ public class Brid : MonoBehaviour
     public AudioClip select;
     public AudioClip fly;
 
+
+    public Sprite hurt;
+    private SpriteRenderer render;
+
     private void Awake()
     {
         sp = GetComponent<SpringJoint2D>();
         rg = GetComponent<Rigidbody2D>();
         myTrail = GetComponent<TestMyTrail>();
+        render = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -149,6 +154,7 @@ public class Brid : MonoBehaviour
     {
         isFly = false;
         myTrail.ClearTrails();
+        
     }
 
     public void AudioPlay(AudioClip clip)
@@ -163,5 +169,11 @@ public class Brid : MonoBehaviour
     {
         isFly = false;
 
+    }
+
+
+    public void Hurt()
+    {
+        render.sprite = hurt;
     }
 }

@@ -195,6 +195,7 @@ MonoBehaviour:
   smooth: 3
   select: {fileID: 8300000, guid: 3641c9435ad52ea429348437c2742cdb, type: 3}
   fly: {fileID: 8300000, guid: c1a5f2757fb06fd45812883f28dbf66b, type: 3}
+  hurt: {fileID: 21300132, guid: 7f54faac0aa0f654bbbc596164481c55, type: 3}
 --- !u!114 &3360660055091810695
 MonoBehaviour:
   m_ObjectHideFlags: 0
