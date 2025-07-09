@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MapSelect : MonoBehaviour
 {
@@ -37,5 +38,13 @@ public class MapSelect : MonoBehaviour
             panel.SetActive(true);
             map.SetActive(false);
         }
+    }
+
+    /// <summary>
+    /// ·µ»Ø¹Ø¿¨Ñ¡Ôñ
+    /// </summary>
+    public void Retuen()
+    {
+        SceneManager.LoadScene(1);
     }
 }
