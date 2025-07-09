@@ -174,7 +174,7 @@ MonoBehaviour:
   maxSpeed: 8
   minSpeed: 4
   render: {fileID: 0}
-  hurt: {fileID: 21300188, guid: 8b99000cb683daa4aaeab038dd06b707, type: 3}
+  hurt: {fileID: 21300122, guid: 8b99000cb683daa4aaeab038dd06b707, type: 3}
   boom: {fileID: 1640878939803641064, guid: 26ba62927e84c804893c09a878d6a2de, type: 3}
   score: {fileID: 5331891879396125546, guid: 2601307bb2ff603498f5fcf118a1db5c, type: 3}
   isPig: 0

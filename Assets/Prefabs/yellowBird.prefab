@@ -115,13 +115,13 @@ GameObject:
   - component: {fileID: 7664207401055299209}
   - component: {fileID: 1931176010745328215}
   - component: {fileID: 1767680696139615180}
-  - component: {fileID: 4383198164685097926}
   - component: {fileID: 3090274714496981761}
   - component: {fileID: 5387393987076461036}
   - component: {fileID: 2087849998446651087}
+  - component: {fileID: 6993765950187933563}
   m_Layer: 0
   m_Name: yellowBird
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,27 +221,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!231 &4383198164685097926
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4774398086429606246}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_BreakAction: 3
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.08751458, y: 0.7010895}
-  m_AutoConfigureDistance: 0
-  m_Distance: 0.3
-  m_DampingRatio: 0
-  m_Frequency: 2
 --- !u!58 &3090274714496981761
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -302,14 +281,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6ff800a3035c14dbfe01c75e096fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReleasev: 0
   maxDis: 1.5
-  sp: {fileID: 4383198164685097926}
+  sp: {fileID: 0}
   right: {fileID: 0}
   rightPos: {fileID: 0}
   left: {fileID: 0}
   leftPos: {fileID: 0}
   boom: {fileID: 1640878939803641064, guid: 26ba62927e84c804893c09a878d6a2de, type: 3}
+  canMove: 0
   smooth: 3
   select: {fileID: 8300000, guid: 3641c9435ad52ea429348437c2742cdb, type: 3}
   fly: {fileID: 8300000, guid: 65774e057815a5e4fa70215e9acad616, type: 3}
   hurt: {fileID: 21300316, guid: 7f54faac0aa0f654bbbc596164481c55, type: 3}
+--- !u!231 &6993765950187933563
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4774398086429606246}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.3
+  m_DampingRatio: 0
+  m_Frequency: 2
