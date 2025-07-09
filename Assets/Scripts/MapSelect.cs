@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MapSelect : MonoBehaviour
 {
@@ -14,6 +14,11 @@ public class MapSelect : MonoBehaviour
     public GameObject panel;
     public GameObject map;
 
+    public Text starsText;
+
+    public int startNum = 1;
+    public int endNum = 8;
+
     private void Start()
     {
         if (PlayerPrefs.GetInt("totalNum", 0) >= starsNum)
@@ -25,6 +30,14 @@ public class MapSelect : MonoBehaviour
             locks.SetActive(false);
             stars.SetActive(true);
             //TODO:text显示
+
+            int counts = 0;
+            for (int i = starsNum; i <= endNum; i++)
+            {
+                counts += PlayerPrefs.GetInt("level" + i.ToString(), 0);
+            }
+
+            starsText.text = counts.ToString() + " / 24";
         }
     }
 
@@ -43,8 +56,9 @@ public class MapSelect : MonoBehaviour
     /// <summary>
     /// 返回关卡选择
     /// </summary>
-    public void Retuen()
+    public void panelSelect()
     {
-        SceneManager.LoadScene(1);
+        panel.SetActive(false);
+        map.SetActive(true);
     }
 }
