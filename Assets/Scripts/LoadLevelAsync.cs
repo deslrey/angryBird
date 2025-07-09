@@ -8,6 +8,7 @@ public class LoadLevelAsync : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(960, 600, false);
         Invoke("Load", 2);
     }
 
