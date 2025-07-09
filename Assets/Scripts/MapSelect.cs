@@ -21,6 +21,9 @@ public class MapSelect : MonoBehaviour
 
     private void Start()
     {
+        //  清除已保存的数据
+        //PlayerPrefs.DeleteAll();
+
         if (PlayerPrefs.GetInt("totalNum", 0) >= starsNum)
         {
             isSelect = true;
