@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Brid : MonoBehaviour
+
+
+public class Bird : MonoBehaviour
 {
+
     private bool isClick = false;
-    private bool isFly = false; // 飞出标记
-    public bool isReleasev = false;
-
-    public float maxDis = 1.5f;
-
+    public float maxDis = 3;
     [HideInInspector]
     public SpringJoint2D sp;
-
     protected Rigidbody2D rg;
 
     public LineRenderer right;
@@ -27,11 +26,13 @@ public class Brid : MonoBehaviour
 
     [HideInInspector]
     public bool canMove = false;
-
     public float smooth = 3;
 
     public AudioClip select;
     public AudioClip fly;
+
+    private bool isFly = false;
+    public bool isReleasev = false;
 
 
     public Sprite hurt;
@@ -45,41 +46,63 @@ public class Brid : MonoBehaviour
         render = GetComponent<SpriteRenderer>();
     }
 
-    void Start()
+    private void OnMouseDown()//鼠标按下
     {
-        Line(); // 初始化线条
+        if (canMove)
+        {
+            AudioPlay(select);
+            isClick = true;
+            rg.isKinematic = true;
+        }
     }
 
-    void Update()
+
+    private void OnMouseUp() //鼠标抬起
+    {
+        if (canMove)
+        {
+            isClick = false;
+            rg.isKinematic = false;
+            Invoke("Fly", 0.1f);
+            //禁用划线组件
+            right.enabled = false;
+            left.enabled = false;
+            canMove = false;
+        }
+
+    }
+
+
+    private void Update()
     {
         //  判断是否点击到了UI
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
-
-        //  鼠标一直按下，进行位置的跟随
         if (isClick)
-        {
+        {//鼠标一直按下，进行位置的跟随
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //transform.position += new Vector3(0, 0, 10);
             transform.position += new Vector3(0, 0, -Camera.main.transform.position.z);
 
-            if (Vector3.Distance(transform.position, rightPos.position) > maxDis)   //  进行位置限定
-            {
-                Vector3 pos = (transform.position - rightPos.position).normalized;  //  单位化向量
-                pos *= maxDis;  //  最大长度的向量
-                transform.position = pos + rightPos.position;
-            }
 
-            if (!isFly && sp.enabled)
-            {
-                Line();
+            if (Vector3.Distance(transform.position, rightPos.position) > maxDis)
+            { //进行位置限定
+                Vector3 pos = (transform.position - rightPos.position).normalized;//单位化向量
+                pos *= maxDis;//最大长度的向量
+                transform.position = pos + rightPos.position;
+
             }
+            Line();
         }
 
-        //  相机跟随
+
+        //相机跟随
         float posX = transform.position.x;
-        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(Mathf.Clamp(posX, 0, 15), Camera.main.transform.position.y, Camera.main.transform.position.z), smooth * Time.deltaTime);
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(Mathf.Clamp(posX, 0, 15), Camera.main.transform.position.y,
+            Camera.main.transform.position.z), smooth * Time.deltaTime);
+
 
         if (isFly)
         {
@@ -90,59 +113,21 @@ public class Brid : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        if (!isFly && sp.enabled)
-        {
-            Line();
-        }
-    }
-
-    /// <summary>
-    /// 鼠标按下
-    /// </summary>
-    private void OnMouseDown()
-    {
-        if (canMove)
-        {
-            AudioPlay(select);
-            isClick = true;
-            rg.isKinematic = true;
-        }
-    }
-
-    /// <summary>
-    /// 鼠标松开
-    /// </summary>
-    private void OnMouseUp()
-    {
-        if (canMove)
-        {
-            isClick = false;
-            rg.isKinematic = false;
-            Invoke("Fly", 0.1f);
-            canMove = false;
-        }
-    }
-
     void Fly()
     {
+        isFly = true;
+        isReleasev = true;
         AudioPlay(fly);
         myTrail.StartTrails();
         sp.enabled = false;
-        isFly = true;
-        isReleasev = true;
-
-        right.enabled = false;
-        left.enabled = false;
-
         Invoke("Next", 5);
     }
 
+    /// <summary>
+    /// 划线
+    /// </summary>
     void Line()
     {
-        if (isFly) return; // 飞出后不再划线
-
         right.enabled = true;
         left.enabled = true;
 
@@ -153,7 +138,11 @@ public class Brid : MonoBehaviour
         left.SetPosition(1, transform.position);
     }
 
-   protected virtual void Next()
+    /// <summary>
+    /// 下一只小鸟的飞出
+    /// </summary>
+    /// 
+    protected virtual void Next()
     {
         GameManager._instance.birds.Remove(this);
         Destroy(gameObject);
@@ -165,7 +154,6 @@ public class Brid : MonoBehaviour
     {
         isFly = false;
         myTrail.ClearTrails();
-        //render.sprite = hurt;
     }
 
     public void AudioPlay(AudioClip clip)
@@ -173,18 +161,18 @@ public class Brid : MonoBehaviour
         AudioSource.PlayClipAtPoint(clip, transform.position);
     }
 
+
     /// <summary>
     /// 炫技操作
     /// </summary>
     public virtual void ShowSkill()
     {
         isFly = false;
-
     }
-
 
     public void Hurt()
     {
+
         render.sprite = hurt;
     }
 }

@@ -43,7 +43,7 @@ public class Pig : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             AudioPlay(birdCollision);
-            Brid bird = collision.transform.GetComponent<Brid>();
+            Bird bird = collision.transform.GetComponent<Bird>();
             if (bird != null)
             {
                 bird.Hurt();

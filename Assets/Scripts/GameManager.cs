@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public List<Brid> birds;
+    public List<Bird> birds;
     public List<Pig> pigs;
     public static GameManager _instance;
     private Vector3 orignPos;   //  初始化的位置 

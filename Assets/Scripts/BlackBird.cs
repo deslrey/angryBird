@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackBird : Brid
+public class BlackBird : Bird
 {
     public List<Pig> blocks = new List<Pig>();
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenBird : Brid
+public class GreenBird : Bird
 {
     public override void ShowSkill()
     {
