@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Brid : MonoBehaviour
 {
@@ -51,15 +52,22 @@ public class Brid : MonoBehaviour
 
     void Update()
     {
+        //  判断是否点击到了UI
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
+        //  鼠标一直按下，进行位置的跟随
         if (isClick)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position += new Vector3(0, 0, -Camera.main.transform.position.z);
 
-            if (Vector3.Distance(transform.position, rightPos.position) > maxDis)
+            if (Vector3.Distance(transform.position, rightPos.position) > maxDis)   //  进行位置限定
             {
-                Vector3 pos = (transform.position - rightPos.position).normalized;
-                pos *= maxDis;
+                Vector3 pos = (transform.position - rightPos.position).normalized;  //  单位化向量
+                pos *= maxDis;  //  最大长度的向量
                 transform.position = pos + rightPos.position;
             }
 
