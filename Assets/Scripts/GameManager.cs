@@ -46,11 +46,13 @@ public class GameManager : MonoBehaviour
                 birds[i].transform.position = orignPos;
                 birds[i].enabled = true;
                 birds[i].sp.enabled = true;
+                birds[i].canMove = true;
             }
             else
             {
                 birds[i].enabled = false;
                 birds[i].sp.enabled = false;
+                birds[i].canMove = false;
             }
         }
     }

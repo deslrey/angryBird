@@ -31,10 +31,18 @@ public class PausePanel : MonoBehaviour
     /// </summary>
     public void Pause()
     {
-        print("Pause");
         //  1、播放pause动画
         anim.SetBool("isPause", true);
         button.SetActive(false);
+
+        if (GameManager._instance.birds.Count > 0)
+        {
+            //  没有飞出
+            if (GameManager._instance.birds[0].isReleasev == false)
+            {
+                GameManager._instance.birds[0].canMove = false;
+            }
+        }
     }
 
     /// <summary>
@@ -42,10 +50,18 @@ public class PausePanel : MonoBehaviour
     /// </summary>
     public void Resume()
     {
-        print("Resume");
         //  1、播放resume动画
         Time.timeScale = 1;
         anim.SetBool("isPause", false);
+
+        if (GameManager._instance.birds.Count > 0)
+        {
+            //  没有飞出
+            if (GameManager._instance.birds[0].isReleasev == false)
+            {
+                GameManager._instance.birds[0].canMove = true;
+            }
+        }
     }
 
     /// <summary>

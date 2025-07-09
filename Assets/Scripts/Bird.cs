@@ -6,6 +6,7 @@ public class Brid : MonoBehaviour
 {
     private bool isClick = false;
     private bool isFly = false; // ·É³ö±ê¼Ç
+    public bool isReleasev = false;
 
     public float maxDis = 1.5f;
 
@@ -23,7 +24,8 @@ public class Brid : MonoBehaviour
 
     protected TestMyTrail myTrail;
 
-    private bool canMove = true;
+    [HideInInspector]
+    public bool canMove = false;
 
     public float smooth = 3;
 
@@ -121,6 +123,7 @@ public class Brid : MonoBehaviour
         myTrail.StartTrails();
         sp.enabled = false;
         isFly = true;
+        isReleasev = true;
 
         right.enabled = false;
         left.enabled = false;
