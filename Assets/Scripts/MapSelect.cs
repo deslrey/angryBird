@@ -22,7 +22,7 @@ public class MapSelect : MonoBehaviour
     private void Start()
     {
         //  清除已保存的数据
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
 
         if (PlayerPrefs.GetInt("totalNum", 0) >= starsNum)
         {
@@ -35,7 +35,7 @@ public class MapSelect : MonoBehaviour
             //TODO:text显示
 
             int counts = 0;
-            for (int i = starsNum; i <= endNum; i++)
+            for (int i = startNum; i <= endNum; i++)
             {
                 counts += PlayerPrefs.GetInt("level" + i.ToString(), 0);
             }
