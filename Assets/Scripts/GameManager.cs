@@ -131,4 +131,42 @@ public class GameManager : MonoBehaviour
 
         print(PlayerPrefs.GetInt("totalNum"));
     }
+
+    public Transform levelParent; // 用来放置新关卡的父对象
+
+    public void LoadNextLevel()
+    {
+        // 获取当前关卡索引（默认从1开始）
+        int currentLevel = PlayerPrefs.GetInt("nowLevelIndex", 1);
+
+        // 销毁当前关卡
+        GameObject oldLevel = GameObject.Find("CurrentLevel");
+        if (oldLevel != null)
+        {
+            Destroy(oldLevel);
+        }
+
+        int maxLevel = 24;
+        if (currentLevel < maxLevel)
+        {
+            int nextLevel = currentLevel + 1;
+            string levelName = "level" + nextLevel;
+
+            GameObject prefab = Resources.Load<GameObject>(levelName);
+            if (prefab != null)
+            {
+                GameObject newLevel = Instantiate(prefab, levelParent);
+                newLevel.name = "CurrentLevel";
+                PlayerPrefs.SetInt("nowLevelIndex", nextLevel); // 记录当前关卡
+            }
+            else
+            {
+                Debug.LogError("未找到关卡：" + levelName);
+            }
+        }
+        else
+        {
+            Debug.Log("已经是最后一关了");
+        }
+    }
 }

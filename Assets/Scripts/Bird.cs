@@ -38,6 +38,11 @@ public class Bird : MonoBehaviour
     public Sprite hurt;
     protected SpriteRenderer render;
 
+    private void Start()
+    {
+        Line(); // 一开始就画一次线
+    }
+
     private void Awake()
     {
         sp = GetComponent<SpringJoint2D>();
@@ -94,9 +99,13 @@ public class Bird : MonoBehaviour
                 transform.position = pos + rightPos.position;
 
             }
+         
+        }
+        // 只有可操作时才画线
+        if (canMove || isClick)
+        {
             Line();
         }
-
 
         //相机跟随
         float posX = transform.position.x;
